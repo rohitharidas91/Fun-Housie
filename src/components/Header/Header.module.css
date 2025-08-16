@@ -1,0 +1,33 @@
+.appHeader {
+    background: var(--card-bg); /* A slightly visible background color with low opacity */
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 15px 3%;
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);    
+}
+
+.themeButton {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    box-shadow: 0 0 8px 2px var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 3px solid var(--border-color);
+    background: var(--text-color);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.themeButton svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--bg-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;    
+}
+

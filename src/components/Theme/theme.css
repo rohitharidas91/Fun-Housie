@@ -1,0 +1,53 @@
+/* Default theme (dark) */
+:root {
+    --bg-color: #222831;
+    --text-color: rgb(238, 238, 238);
+    --card-bg: #393E46;
+    --border-color: rgb(255, 211, 105);
+    --button-bg: #393E46;
+    --button-border: #FFD369;
+    --button-text: #EEEEEE;
+}
+
+[data-theme="light"] {
+    --bg-color: #EEEEEE;
+    --text-color: #222831;
+    --card-bg: #FFD369;
+    --border-color: #393E46;
+    --button-bg: #FFD369;
+    --button-border: #393E46;
+    --button-text: #222831;
+}
+
+body {
+    background-color: #222831;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: cursive
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid var(--button-border);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: var(--font-family);
+}
+
+button:hover {
+    background-color: var(--button-border);
+    color: var(--button-bg);
+    transform: scale(1.02);
+    transition: transform 0.2s ease, opacity 0.2s ease;  
+}
+
+button:active {
+    transform: scale(0.95);
+    transition: transform 0.2s ease, opacity 0.2s ease;    
+}
+
+h1 {
+    font-size: xx-large;
+}
