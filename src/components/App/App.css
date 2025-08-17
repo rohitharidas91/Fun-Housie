@@ -11,14 +11,18 @@
 }
 
 .appLeft {
-    width: 41%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly ;
 }
 
 .appRight {
-    width: 59%;
+    width: 60%;
+}
+
+.appRightUpper {
+    display: flex;
 }
 
 /* Mobile Responsive */

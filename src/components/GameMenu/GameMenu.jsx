@@ -1,18 +1,32 @@
 import { useState } from 'react';
 import styles from './GameMenu.module.css'
 
-function GameMenu() {
+function GameMenu(props) {
 
     //function for gameSpeed Slider
-    const [speed, setSpeed] = useState(10);
+    const [value, setValue] = useState(props.speed);
+
     const handleSlide = (event) => {
-        setSpeed(event.target.value);
+        const newValue = Number(event.target.value);
+        setValue(newValue);
+        props.setSpeed(newValue);
     }
 
+    const handleClickNewGame = () => {
+        if (props.gameStarted === false) {
+            props.setGameStarted(true)
+        } else props.resetGame();
+    }
+
+    const handleClickPause = () => {
+        props.setPause(!props.pause);
+    }
+
+    
     return (
         <div className={styles.gameMenu}>
-            <button>New Game</button>
-            <button>Pause</button>
+            <button onClick={handleClickNewGame}>{props.gameStarted ? 'Reset Game' : 'New Game'}</button>
+            <button onClick={handleClickPause}>{props.pause ? 'Resume' : 'Pause'}</button>
             <div className={styles.speedContainer}>
                 <label for="gameSpeed">Speed: </label>
                 <input
@@ -21,10 +35,10 @@ function GameMenu() {
                     name="volume"
                     min="1"
                     max="60"
-                    value={speed}
+                    value={props.speed}
                     onChange={handleSlide}>
                 </input>
-                <span id="gameSpeedValue">{speed}</span>
+                <span id="gameSpeedValue">{value}</span>
             </div>
 
         </div>

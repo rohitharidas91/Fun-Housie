@@ -27,7 +27,7 @@ body {
     background: var(--bg-secondary);
     color: var(--neg-1);
     transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: cursive
+    font-family: 'Century Gothi', sans-serif;
 }
 
 button {
@@ -38,7 +38,6 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: var(--font-family);
 }
 
 button:hover {
