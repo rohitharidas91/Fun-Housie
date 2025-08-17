@@ -1,35 +1,40 @@
 /* Default theme (dark) */
 :root {
-    --bg-color: #222831;
-    --text-color: rgb(238, 238, 238);
-    --card-bg: #393E46;
-    --border-color: rgb(255, 211, 105);
-    --button-bg: #393E46;
-    --button-border: #FFD369;
-    --button-text: #EEEEEE;
+    --bg-primary : rgb(20, 33, 61);
+    --bg-secondary: rgb(32, 32, 32);
+    --accent-1: rgb(252, 163, 17);
+    --accent-1-50:rgb(252, 163, 17,0.5);
+    --accent-2: rgb(32, 64, 64);
+    --accent-2-50: rgb(32, 64, 64,0.5);
+    --grad-1: linear-gradient(var(--accent-1), var(--accent-1-50)) 1;
+    --neg-1: rgb(229, 229, 229);
+    --neg-2: rgb(255, 255, 255);
 }
 
 [data-theme="light"] {
-    --bg-color: #EEEEEE;
-    --text-color: #222831;
-    --card-bg: #FFD369;
-    --border-color: #393E46;
-    --button-bg: #FFD369;
-    --button-border: #393E46;
-    --button-text: #222831;
+    --bg-primary : rgb(229, 229, 229);
+    --bg-secondary: rgb(255, 255, 255);
+    --accent-2: rgb(252, 163, 17);
+    --accent-2-50:rgb(252, 163, 17,0.5);
+    --accent-1: rgb(32, 64, 64);
+    --accent-1-50: rgb(32, 64, 64,0.5);
+    --grad-1: linear-gradient(to right, var(--accent-1), var(--accent-1-50)) 1;
+    --neg-1: rgb(0, 33, 61);
+    --neg-2: rgb(32, 32, 32);
 }
 
 body {
-    background-color: #222831;
-    color: var(--text-color);
+    background: var(--bg-secondary);
+    color: var(--neg-1);
     transition: background-color 0.3s ease, color 0.3s ease;
     font-family: cursive
 }
 
 button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: 2px solid var(--button-border);
+    background-color: var(--bg-secondary);
+    color: var(--neg-1);
+    border: 1px solid var(--accent-1);  
+    box-shadow:  0 0 4px 0px var(--accent-1);  
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -37,9 +42,10 @@ button {
 }
 
 button:hover {
-    background-color: var(--button-border);
-    color: var(--button-bg);
+    background-color: var(--accent-1);
+    color: var(--bg-secondary);
     transform: scale(1.02);
+    border: 2px solid var(--neg-2);    
     transition: transform 0.2s ease, opacity 0.2s ease;  
 }
 

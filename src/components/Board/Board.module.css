@@ -1,13 +1,14 @@
 .board {
     aspect-ratio: 1 / 1;
-    background-color: rgba(0,0,0,0.2);   
+    background-color: rgba(0, 0, 0, 0.2);   
     margin: 1em;
     padding: 0.5em;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(9, 1fr);
     border-radius: 10px;
-    border: 3px solid var(--border-color);
+    border: 2px solid var(--accent-1);
+    box-shadow:  0 0 4px 0px var(--accent-1);  
 }
 
 .boardItem {
@@ -17,8 +18,9 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    background: var(--card-bg);
-    border: 2px solid var(--border-color);
+    background: var(--accent-2);
+    border: 2px solid var(--accent-1);
+    box-shadow:  0 0 6px 0px var(--accent-1);  
     border-radius: 50%;
     font-size: 1.2em;    
 }

@@ -1,24 +1,23 @@
 .appHeader {
-    background: var(--card-bg); /* A slightly visible background color with low opacity */
+    background: var(--accent-2); /* A slightly visible background color with low opacity */
     display: flex;
     flex-direction: row;
     justify-content:space-between;
     padding: 15px 3%;
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);    
+    border-bottom: 2px solid var(--accent-1-50);
 }
 
 .themeButton {
     border-radius: 50%;
     height: 50px;
     width: 50px;
-    box-shadow: 0 0 8px 2px var(--text-color);
+    box-shadow: 0 0 8px 2px var(--neg-1);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
-    border: 3px solid var(--border-color);
-    background: var(--text-color);
+    border: 3px solid var(--accent-1);
+    background: var(--neg-1);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -27,7 +26,7 @@
 .themeButton svg {
     width: 24px;
     height: 24px;
-    fill: var(--bg-color);
+    fill: var(--bg-primary);
     transition: transform 0.3s ease, opacity 0.3s ease;    
 }
 
