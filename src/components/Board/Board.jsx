@@ -1,17 +1,24 @@
 import styles from "./Board.module.css";
 
-function Board() {
-  //Create an array with the numbers 1-90
-  const gridNum = [];
-  for (let i = 1; i <= 90; i++) {
-    gridNum.push(i);
+function Board(props) {
+
+  const handleClick = (clickedNum) => {
+    props.setGridNum(prev =>
+      prev.map(item =>
+        item.num === clickedNum ? { ...item, isCalled: !item.isCalled } : item
+      )
+    );
   }
 
   return (
     <div className={styles.board}>
-      {gridNum.map((num, index) => (
-        <span className={styles.boardItem} key={index}>
-          {num}
+      {props.gridNum.map((item, index) => (
+        <span 
+          className={`${styles.boardItem} ${item.isCalled ? styles.called : ''}`} 
+          key={index} 
+          onClick={() => handleClick(item.num)}
+        >
+          {item.num}
         </span>
       ))}
     </div>

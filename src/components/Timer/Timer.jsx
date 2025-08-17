@@ -8,7 +8,6 @@ function Timer(props) {
     const circumference = 2 * Math.PI * radius;
     const strokeDashoffset = circumference - (props.timeLeft / props.speed) * circumference;
 
-
     //This its the outer part of the circle (White space)
     const circleTimer = (
         <circle
@@ -38,7 +37,7 @@ function Timer(props) {
             textAnchor='middle'
             dominantBaseline='central'
             className={styles.circleNumber}
-        >36</text>
+        >{props.currentNum}</text>
     )
 
     // Reset timeLeft when speed changes
@@ -51,10 +50,11 @@ function Timer(props) {
         let interval = null;
         if (!props.pause && props.timeLeft > 0) {
             interval = setInterval(() => {
-                props.setTimeLeft(timeLeft => timeLeft - 0.1); // Update every 100ms for smooth animation
-            }, 100);
+                props.setTimeLeft(timeLeft => timeLeft - 1); // Update every 1 sec
+            }, 1000);
         } else if (props.timeLeft <= 0) {
-            props.setTimeLeft(0);
+            props.callNumber();
+            props.setTimeLeft(props.speed);
         }
 
         return () => clearInterval(interval);

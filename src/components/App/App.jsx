@@ -12,11 +12,27 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false)
   const [pause, setPause] = useState(false)
   const [speed, setSpeed] = useState(10); // initate speed at 10
-  const [timeLeft, setTimeLeft] = useState (speed)
+  const [timeLeft, setTimeLeft] = useState(speed)
+  const [currentNum, setCurrentNum] = useState(0);
 
   //Reset Game function
   function resetGame() {
     alert('reset the board'); //Need to add this funtionality later on
+  }
+
+  //Initialize the Game Board
+  //Create an array with the numbers 1-90
+  const [gridNum, setGridNum] = useState(() => {
+    const initialNumbers = [];
+    for (let i = 1; i <= 90; i++) {
+      initialNumbers.push({ num: i, isCalled: false });
+    }
+    return initialNumbers;
+  });
+
+  //Need to Randomly start calling numbers
+  function callNumber() {
+    setCurrentNum(Math.floor(Math.random() * 90) + 1);
   }
 
   return (
@@ -34,7 +50,10 @@ function App() {
               pause={pause}
               setPause={setPause}
             />
-            <Board />
+            <Board 
+              gridNum={gridNum}
+              setGridNum={setGridNum}
+            />
           </div>
           <div className='appRight'>
             <div className='appRightUpper'>
@@ -43,6 +62,9 @@ function App() {
                 timeLeft={timeLeft} 
                 setTimeLeft={setTimeLeft}
                 pause={pause}
+                callNumber={callNumber}
+                currentNum={currentNum}
+                setCurrentNum={setCurrentNum}
               />
               <div>PlaceholderDiv</div>
             </div>
