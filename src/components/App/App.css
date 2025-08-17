@@ -10,15 +10,18 @@
 }
 
 .appLeft {
-    width: 50%;
+    width: 41%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly ;
 }
 
 .appRight {
-    width: 50%;
+    width: 59%;
 }
 
 /* Mobile Responsive */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .appBody {
         flex-direction: column;
         min-height: auto;

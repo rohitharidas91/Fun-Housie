@@ -1,0 +1,24 @@
+.board {
+    aspect-ratio: 1 / 1;
+    background-color: rgba(0,0,0,0.2);   
+    margin: 1em;
+    padding: 0.5em;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    border-radius: 10px;
+    border: 3px solid var(--border-color);
+}
+
+.boardItem {
+    height: 80%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    font-size: 1.2em;    
+}
