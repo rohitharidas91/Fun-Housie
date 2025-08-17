@@ -1,15 +1,6 @@
 import styles from "./Board.module.css";
 
 function Board(props) {
-
-  const handleClick = (clickedNum) => {
-    props.setGridNum(prev =>
-      prev.map(item =>
-        item.num === clickedNum ? { ...item, isCalled: !item.isCalled } : item
-      )
-    );
-  }
-
   return (
     <div className={styles.board}>
       {props.gridNum.map((item, index) => (

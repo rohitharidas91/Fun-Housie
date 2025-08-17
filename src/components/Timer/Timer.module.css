@@ -15,7 +15,7 @@
     fill: none;
     stroke-linecap: round;
     transform: rotate(-90 100 100);
-    transition: stroke-dashoffset 0.1s ease-in-out
+    
 }
 
 .circleNumber {

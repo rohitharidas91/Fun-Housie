@@ -50,8 +50,8 @@ function Timer(props) {
         let interval = null;
         if (!props.pause && props.timeLeft > 0) {
             interval = setInterval(() => {
-                props.setTimeLeft(timeLeft => timeLeft - 1); // Update every 1 sec
-            }, 1000);
+                props.setTimeLeft(timeLeft => timeLeft - 0.05); // Update every 1 sec
+            }, 15);
         } else if (props.timeLeft <= 0) {
             props.callNumber();
             props.setTimeLeft(props.speed);
