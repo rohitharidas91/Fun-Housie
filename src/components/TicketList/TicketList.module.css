@@ -1,4 +1,52 @@
 .ticketList {
-    background: green;
-    height: 80%;
+    height: 75%;
+    padding: 0.5em;
+    overflow-y: scroll;
+    background-color: rgba(0,0, 0, 0.5);
+    border: solid 2px var(--bg-secondary);
+    margin: 1em;
+}
+
+.ticketList::-webkit-scrollbar-track
+{
+	background-color: var(--bg-secondary);
+    border-radius: 5px;
+}
+
+.ticketList::-webkit-scrollbar
+{
+	width: 6px;
+    border-radius: 5px;
+}
+
+.ticketList::-webkit-scrollbar-thumb
+{
+	background-color: var(--accent-1);	
+    border-radius: 5px;
+}
+
+.ticketListItem {
+    margin: 0.4em;
+    padding: 0.5em;
+    border: solid 1px white;
+    background: var(--bg-secondary);
+    border-radius: 5px;
+    box-shadow:  0 0 4px 0px var(--accent-1);
+    display: flex;
+    align-content: center;
+}
+
+.ticketListDtls {
+    margin-left: 1em;
+}
+
+.checkBox {
+    height: 2em; 
+    width: 2em;    
+    transition: 0.2s ease-in;
+}
+
+.checkBox:hover {
+    outline: solid 2px var(--accent-1-50);
+    transition: 0.2s ease-out;
 }
