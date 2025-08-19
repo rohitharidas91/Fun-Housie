@@ -4,8 +4,12 @@ import Header from '../Header/Header'
 import GameMenu from '../GameMenu/GameMenu';
 import Board from '../Board/Board';
 import Timer from '../Timer/Timer'
+import TicketGenerator from '../TicketGenerator/TicketGenerator';
+import TicketList from '../TicketList/TicketList';
+import TicketDisplay from '../TicketDisplay/TicketDisplay';
 import '../Theme/theme.css';
 import ThemeProvider from '../Theme/ThemeProvider'
+
 
 function App() {
 
@@ -15,6 +19,20 @@ function App() {
   const [speed, setSpeed] = useState(10); // initate speed at 10
   const [timeLeft, setTimeLeft] = useState(speed)
   const [currentNum, setCurrentNum] = useState(0);
+
+  //This is a temporary array for tickets... I am manually making them but will do it through a function later on
+  const tickets = [
+    {
+      ticketId: 1,
+      playerName: 'Player1',
+      ticketNumbers: [1, 3, 10, 21, 37, 39, 46, 53, 59, 60, 65, 66, 76, 88, 90]
+    },
+    {
+      ticketId: 2,
+      playerName: 'Player2',
+      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88]
+    }
+  ];
 
   //Reset Game function
   function resetGame() {
@@ -77,6 +95,7 @@ function App() {
             resetGame={resetGame}
             pause={pause}
             setPause={setPause}
+            callNumber={callNumber}
           />
           <Board
             gridNum={gridNum}
@@ -85,16 +104,24 @@ function App() {
         </div>
         <div className='appRight'>
           <div className='appRightUpper'>
-            <Timer
-              speed={speed}
-              timeLeft={timeLeft}
-              setTimeLeft={setTimeLeft}
-              pause={pause}
-              callNumber={callNumber}
-              currentNum={currentNum}
-              setCurrentNum={setCurrentNum}
-            />
-            <div>PlaceholderDiv</div>
+            <div className='appRightUpper-left'>
+              <Timer
+                speed={speed}
+                timeLeft={timeLeft}
+                setTimeLeft={setTimeLeft}
+                pause={pause}
+                callNumber={callNumber}
+                currentNum={currentNum}
+                setCurrentNum={setCurrentNum}
+              />
+            </div>
+            <div className='appRightUpper-right'>
+              <TicketGenerator />
+              <TicketList />
+            </div>
+          </div>
+          <div className='appRightLower'>
+            <TicketDisplay />
           </div>
         </div>
 

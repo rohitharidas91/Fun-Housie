@@ -14,7 +14,7 @@
     width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly ;
+    justify-content: space-between ;
 }
 
 .appRight {
@@ -23,7 +23,22 @@
 
 .appRightUpper {
     display: flex;
+    justify-content: space-evenly;
+    height: 60%;
 }
+
+.appRightUpper-left {
+    width: 45%;
+    display: flex;
+}
+.appRightUpper-right {
+    width: 55%;
+}
+.appRightLower {
+    height: 40%;
+    
+}
+
 
 /* Mobile Responsive */
 @media screen and (max-width: 1024px) {

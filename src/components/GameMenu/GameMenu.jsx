@@ -16,6 +16,7 @@ function GameMenu(props) {
         if (props.gameStarted === false) {
             props.setGameStarted(true)
             props.setPause(false);
+            props.callNumber();
         } else props.resetGame();
     }
 
