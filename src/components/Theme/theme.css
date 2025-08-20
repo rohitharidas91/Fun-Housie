@@ -38,6 +38,9 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 button:hover {
@@ -55,4 +58,9 @@ button:active {
 
 h1 {
     font-size: xx-large;
+}
+
+input[type=text] {
+    border-radius: 10px;
+    padding: 1em;
 }

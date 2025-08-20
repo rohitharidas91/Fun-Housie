@@ -1,4 +1,5 @@
 import styles from './TicketGenerator.module.css'
+import { FaPlusCircle } from 'react-icons/fa';
 
 function TicketGenerator(props) {
     return (
@@ -6,7 +7,7 @@ function TicketGenerator(props) {
             <h2>Ticket Generator</h2>
             <div className={styles.ticketInput}>
                 <input type='text' placeholder='Player Name...' className={styles.playerName}/>
-                <button>Generate</button>
+                <button> <FaPlusCircle /> <p className={styles.btnText}>Generate</p> </button>
             </div>
         </div>
     )

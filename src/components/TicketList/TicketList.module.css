@@ -5,6 +5,7 @@
     background-color: rgba(0,0, 0, 0.5);
     border: solid 2px var(--bg-secondary);
     margin: 1em;
+    box-shadow: 0 0 4px 0px var(--accent-1);
 }
 
 .ticketList::-webkit-scrollbar-track

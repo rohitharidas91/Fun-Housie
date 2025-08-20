@@ -182,7 +182,9 @@ function App() {
             </div>
           </div>
           <div className='appRightLower'>
-            <TicketDisplay />
+            <TicketDisplay 
+              tickets={tickets}
+            />
           </div>
         </div>
 
