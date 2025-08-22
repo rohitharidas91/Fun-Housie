@@ -34,7 +34,8 @@
     border-radius: 5px;
     box-shadow:  0 0 4px 0px var(--accent-1);
     display: flex;
-    align-content: center;
+    align-items: center;
+
 }
 
 .ticketListDtls {
@@ -50,4 +51,14 @@
 .checkBox:hover {
     outline: solid 2px var(--accent-1-50);
     transition: 0.2s ease-out;
+}
+
+.deleteTicket {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    font-size: small;
 }

@@ -19,9 +19,9 @@ function App() {
   const [speed, setSpeed] = useState(10); // initate speed at 10
   const [timeLeft, setTimeLeft] = useState(speed)
   const [currentNum, setCurrentNum] = useState(0);
-  
+  const [playerName, setPlayerName] = useState('');
 
-  
+
   //Reset Game function
   function resetGame() {
     setGridNum(prevGrid =>
@@ -33,7 +33,7 @@ function App() {
     setTimeLeft(speed); // Reset the timer
     setCurrentNum(0);   // Reset the current number
   }
-  
+
   //Initialize the Game Board
   //Create an array with the numbers 1-90
   const [gridNum, setGridNum] = useState(() => {
@@ -43,12 +43,12 @@ function App() {
     }
     return initialNumbers;
   });
-  
+
   //Need to Randomly start calling numbers
   function callNumber() {
     const uncalledNumbers = gridNum
-    .filter(item => !item.isCalled)
-    .map(item => item.num);
+      .filter(item => !item.isCalled)
+      .map(item => item.num);
     //Would need to create a gameover state here
     if (uncalledNumbers.length === 0) {
       setGameOver(true);
@@ -58,85 +58,75 @@ function App() {
     //We need to generate a random number from the uncalled numbers.
     const randomIndex = Math.floor(Math.random() * uncalledNumbers.length);
     const calledNum = uncalledNumbers[randomIndex];
-    
+
     setGridNum(prev =>
       prev.map(item =>
         item.num === calledNum ? { ...item, isCalled: !item.isCalled } : item
       )
     );
-    
+
     setCurrentNum(calledNum)
   }
-  
+
   //This is a temporary array for tickets... I am manually making them but will do it through a function later on
-  const [tickets, setTickets] = useState([
-    {
-      ticketId: 1,
-      playerName: 'Test Pleyer One',
-      ticketNumbers: [1, 3, 10, 21, 37, 39, 46, 53, 59, 60, 65, 66, 76, 88, 90],
-      isSelected: true
-    },
-    {
-      ticketId: 2,
-      playerName: 'Test Pleyer Two',
-      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88],
-      isSelected: false
-    },
-    {
-      ticketId: 3,
-      playerName: 'Test Pleyer Two',
-      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88],
-      isSelected: false
-    },
-    {
-      ticketId: 4,
-      playerName: 'Test Pleyer Two',
-      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88],
-      isSelected: false
-    },
-    {
-      ticketId: 5,
-      playerName: 'Test Pleyer Two',
-      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88],
-      isSelected: false
-    },
-    {
-      ticketId: 6,
-      playerName: 'Test Pleyer Two',
-      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88],
-      isSelected: false
-    },
-    {
-      ticketId: 7,
-      playerName: 'Test Pleyer Two',
-      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88],
-      isSelected: false
-    },
-    {
-      ticketId: 8,
-      playerName: 'Test Pleyer Two',
-      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88],
-      isSelected: false
-    },
-    {
-      ticketId: 9,
-      playerName: 'Test Pleyer Two',
-      ticketNumbers: [4, 13, 20, 26, 30, 40, 44, 55, 56, 68, 69, 72, 74, 86, 88],
-      isSelected: false
-    },
-  ]);
+  const [tickets, setTickets] = useState([]);
 
   const toggleSelected = (id) => {
     setTickets(prev => {
       return prev.map(ticket => {
-        if(ticket.ticketId === id) {
-          return {...ticket, isSelected: !ticket.isSelected}
+        if (ticket.ticketId === id) {
+          return { ...ticket, isSelected: !ticket.isSelected }
         }
         return ticket;
       });
     });
   };
-  
+
+  /**
+ * A factory function to generate unique ticket objects.
+ * This function maintains a counter for a serially increasing ticketId.
+ */
+  const [ticketCounter, setTicketCounter] = useState(1);
+
+  function generateTicket(playerName) {
+
+    if (!playerName) {
+      alert('Please enter player name');
+    } else {
+
+      //Need to do it this way because setTicket counter is async. It bugged out everything!
+      
+      setTicketCounter(prevCounter => prevCounter + 1);
+
+      const ticketNumbers = [];
+      const allPossibleNumbers = Array.from({ length: 90 }, (_, i) => i + 1);
+
+      for (let i = allPossibleNumbers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [allPossibleNumbers[i], allPossibleNumbers[j]] = [allPossibleNumbers[j], allPossibleNumbers[i]];
+      }
+      for (let i = 0; i < 15; i++) {
+        ticketNumbers.push(allPossibleNumbers[i]);
+      }
+
+      ticketNumbers.sort((a, b) => a - b);
+
+      const newTicket = {
+        ticketId: ticketCounter,
+        playerName: playerName,
+        ticketNumbers: ticketNumbers,
+        isSelected: false,
+      };
+
+      // Update the tickets state by adding the new ticket.
+      setTickets(prevTickets => [...prevTickets, newTicket]);
+    }
+  }
+
+  function removeTicket(ticketToRemove) {
+    const updatedTickets = tickets.filter(ticket => ticket.ticketId !== ticketToRemove.ticketId);
+    setTickets(updatedTickets);
+  }
 
   return (
 
@@ -174,15 +164,20 @@ function App() {
               />
             </div>
             <div className='appRightUpper-right'>
-              <TicketGenerator />
+              <TicketGenerator
+                clickGenerate={generateTicket}
+                playerName={playerName}
+                setPlayerName={setPlayerName}
+              />
               <TicketList
                 tickets={tickets}
                 onTicketSelect={toggleSelected}
+                clickDelete={removeTicket}
               />
             </div>
           </div>
           <div className='appRightLower'>
-            <TicketDisplay 
+            <TicketDisplay
               tickets={tickets}
             />
           </div>

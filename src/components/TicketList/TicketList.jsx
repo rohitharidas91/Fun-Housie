@@ -21,6 +21,10 @@ function TicketList(props) {
                     >
                         {` 🎟️ Ticket No: ${item.ticketId} | 🕹️   Player: ${item.playerName}`}
                     </span>
+                    <button 
+                        className={styles.deleteTicket}
+                        onClick={() => props.clickDelete(item)}
+                    >🗑️</button>
                 </div>
             ))}
         </div>

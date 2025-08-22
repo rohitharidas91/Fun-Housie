@@ -33,6 +33,9 @@
 }
 .appRightUpper-right {
     width: 55%;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
 }
 .appRightLower {
     height: 40%;
