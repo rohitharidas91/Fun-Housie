@@ -17,6 +17,7 @@ function Timer(props) {
             className={styles.circleTimer}
         />
     )
+    
     //This is the actual timer
     const circleProgress = (
         <circle

@@ -3,21 +3,8 @@ import styles from './GameMenu.module.css'
 
 function GameMenu(props) {
 
-    //function for gameSpeed Slider
-    const [value, setValue] = useState(props.speed);
-
-    const handleSlide = (event) => {
-        const newValue = Number(event.target.value);
-        setValue(newValue);
-        props.setSpeed(newValue);
-    }
-
-    const handleClickNewGame = () => {
-        if (props.gameStarted === false) {
-            props.setGameStarted(true)
-            props.setPause(false);
-            props.callNumber();
-        } else props.resetGame();
+    const handleSlide = (e) => {
+        props.setSpeed(e.target.value);
     }
 
     const handleClickPause = () => {
@@ -27,7 +14,7 @@ function GameMenu(props) {
     
     return (
         <div className={styles.gameMenu}>
-            <button onClick={handleClickNewGame}>{props.gameStarted ? 'Reset Game' : 'New Game'}</button>
+            <button onClick={props.newGame}>{props.gameStarted ? 'Reset Game' : 'New Game'}</button>
             <button 
                 onClick={handleClickPause}
                 disabled={!props.gameStarted || props.gameOver}

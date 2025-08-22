@@ -9,20 +9,35 @@ import TicketList from '../TicketList/TicketList';
 import TicketDisplay from '../TicketDisplay/TicketDisplay';
 import '../Theme/theme.css';
 import ThemeProvider from '../Theme/ThemeProvider'
+import generateTicketNumbers from '../../util/utilityFunctions'
 
 
 function App() {
 
+  const [speed, setSpeed] = useState(10); // handled inside Timer because it has useEffect
+  const [timeLeft, setTimeLeft] = useState(speed) // handled inside Timer because it has useEffect
+  const [playerName, setPlayerName] = useState(''); // handled inside TicketGenerator
+
+  // Game Menu Functions //
+
+  // ********** Handle Game Status **********//
+
   const [gameStarted, setGameStarted] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [pause, setPause] = useState(true)
-  const [speed, setSpeed] = useState(10); // initate speed at 10
-  const [timeLeft, setTimeLeft] = useState(speed)
-  const [currentNum, setCurrentNum] = useState(0);
-  const [playerName, setPlayerName] = useState('');
+  
+  // ******** New Game ****** //
 
+  function newGame() {
+    if (gameStarted === false) {
+      setGameStarted(true)
+      setPause(false);
+      callNumber();
+    } else resetGame();
+  }
 
-  //Reset Game function
+  // ******** Reset Game ****** //
+
   function resetGame() {
     setGridNum(prevGrid =>
       prevGrid.map(item => ({ ...item, isCalled: false }))
@@ -34,8 +49,10 @@ function App() {
     setCurrentNum(0);   // Reset the current number
   }
 
-  //Initialize the Game Board
+
+  // ******** Initialize the Game Board ********//
   //Create an array with the numbers 1-90
+
   const [gridNum, setGridNum] = useState(() => {
     const initialNumbers = [];
     for (let i = 1; i <= 90; i++) {
@@ -44,17 +61,23 @@ function App() {
     return initialNumbers;
   });
 
-  //Need to Randomly start calling numbers
+
+
+  // ***** Randomly start calling numbers ***** //
+
+  const [currentNum, setCurrentNum] = useState(0);
+
   function callNumber() {
     const uncalledNumbers = gridNum
       .filter(item => !item.isCalled)
       .map(item => item.num);
-    //Would need to create a gameover state here
+
     if (uncalledNumbers.length === 0) {
-      setGameOver(true);
-      setPause(true);
+      setGameOver(true); //If no more numbers are isCalled then its game over!
+      setPause(true); //Pauses the timer once all numbers are called so it stops going in circles.
       return;
     }
+
     //We need to generate a random number from the uncalled numbers.
     const randomIndex = Math.floor(Math.random() * uncalledNumbers.length);
     const calledNum = uncalledNumbers[randomIndex];
@@ -64,14 +87,13 @@ function App() {
         item.num === calledNum ? { ...item, isCalled: !item.isCalled } : item
       )
     );
-
     setCurrentNum(calledNum)
   }
 
-  //This is a temporary array for tickets... I am manually making them but will do it through a function later on
-  const [tickets, setTickets] = useState([]);
 
-  const toggleSelected = (id) => {
+  // ***** Function for ticket selection to be used for print option ****** //
+
+  function toggleSelected(id) {
     setTickets(prev => {
       return prev.map(ticket => {
         if (ticket.ticketId === id) {
@@ -82,51 +104,42 @@ function App() {
     });
   };
 
-  /**
- * A factory function to generate unique ticket objects.
- * This function maintains a counter for a serially increasing ticketId.
- */
+
+
+  // ****** Factory function to generate unique ticket objects.******* //
+
+  const [tickets, setTickets] = useState([]);
   const [ticketCounter, setTicketCounter] = useState(1);
 
   function generateTicket(playerName) {
-
     if (!playerName) {
       alert('Please enter player name');
     } else {
-
-      //Need to do it this way because setTicket counter is async. It bugged out everything!
-      
       setTicketCounter(prevCounter => prevCounter + 1);
-
-      const ticketNumbers = [];
-      const allPossibleNumbers = Array.from({ length: 90 }, (_, i) => i + 1);
-
-      for (let i = allPossibleNumbers.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [allPossibleNumbers[i], allPossibleNumbers[j]] = [allPossibleNumbers[j], allPossibleNumbers[i]];
-      }
-      for (let i = 0; i < 15; i++) {
-        ticketNumbers.push(allPossibleNumbers[i]);
-      }
-
-      ticketNumbers.sort((a, b) => a - b);
-
+      // construct the ticket      
       const newTicket = {
         ticketId: ticketCounter,
         playerName: playerName,
-        ticketNumbers: ticketNumbers,
+        ticketNumbers: generateTicketNumbers(), // Some weird algo. God help me!
         isSelected: false,
       };
-
       // Update the tickets state by adding the new ticket.
       setTickets(prevTickets => [...prevTickets, newTicket]);
     }
   }
 
+
+
+  // ****** Function to delete tickets.******* //
+
   function removeTicket(ticketToRemove) {
     const updatedTickets = tickets.filter(ticket => ticket.ticketId !== ticketToRemove.ticketId);
     setTickets(updatedTickets);
   }
+
+
+
+  // ****** App Component ***** //
 
   return (
 
@@ -141,6 +154,7 @@ function App() {
             setGameStarted={setGameStarted}
             gameOver={gameOver}
             resetGame={resetGame}
+            newGame={newGame}
             pause={pause}
             setPause={setPause}
             callNumber={callNumber}
