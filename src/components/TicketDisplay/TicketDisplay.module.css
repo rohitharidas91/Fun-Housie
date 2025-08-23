@@ -43,7 +43,7 @@
 
 .ticketDisplayBody {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(3, 1fr);
     height: calc(80% - 2em);
     margin: 1em;

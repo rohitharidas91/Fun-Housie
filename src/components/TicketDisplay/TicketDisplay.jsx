@@ -7,7 +7,7 @@ function TicketDisplay(props) {
     //Temporary Grid - This will be filled in when the ticket number is entered
 
     const initialGrid = []
-    for (let i = 1; i <= 30; i++) {
+    for (let i = 1; i <= 27; i++) {
         initialGrid.push({ num: '', isCalled: false })
     }
 
@@ -19,7 +19,7 @@ function TicketDisplay(props) {
     // I'm creating this function here instead of Apps because I think its self contained
     // At least I hope that's the correct way of doing it anyway!
 
-    const displayTicket = (ticket) => {
+    const displayTicket = () => {
         // If the box is empty prompt the user to enter a ticket ID
         if (!ticketId) {
             alert('Please enter a ticket ID');
@@ -37,6 +37,9 @@ function TicketDisplay(props) {
         }
         //Insert Ticket numbers into grid based on ticketId
         // Update the ticket grid with the found ticket numbers
+        
+
+
         const updatedGrid = ticketGrid.map((cell, index) => {
             const num = ticketToDisplay.ticketNumbers[index] || '';
             return { ...cell, num };
