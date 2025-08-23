@@ -1,5 +1,3 @@
-//Firstly I really hate working with nested loops (my brain goes brrrr).
-//So my apologies if this algo is bonkers.
 //The idea is to generate 15 random numbers from 1-90 but there should be at least one but no more than 3 numbers from each decade
 //Did I use AI for this part? Absolutely yes,I suck at coding.
 

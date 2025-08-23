@@ -3,7 +3,8 @@ import styles from './TicketDisplay.module.css'
 import { useState, useEffect } from 'react';
 
 function TicketDisplay(props) {
-    const initialGrid = Array(27).fill({ num: '', isCalled: false });
+
+    const initialGrid = Array(27).fill({ num: '', isCalled: false })
     const [ticketGrid, setTicketGrid] = useState(initialGrid);
     const [ticketId, setTicketId] = useState('');
 
@@ -25,7 +26,7 @@ function TicketDisplay(props) {
 
     const displayTicket = () => {
         if (!ticketId) {
-            alert('Please enter a ticket ID');
+            setTicketGrid(initialGrid)
             return;
         }
 
@@ -51,7 +52,7 @@ function TicketDisplay(props) {
                 updateTicketGrid(ticketToDisplay);
             }
         }
-    }, [props.gridNum, ticketId, props.tickets]);
+    }, [props.gridNum, props.tickets]);
 
 
     return (

@@ -59,8 +59,10 @@
     justify-content: center;
     align-items: center;
     font-size: 2em;
+    transition: 0.7s ease-in;
 }
 
 .called {
-    background: red;
+    background: var(--accent-2-50);
+    text-decoration:line-through;
 }
