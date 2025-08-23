@@ -9,7 +9,7 @@ import TicketList from '../TicketList/TicketList';
 import TicketDisplay from '../TicketDisplay/TicketDisplay';
 import '../Theme/theme.css';
 import ThemeProvider from '../Theme/ThemeProvider'
-import generateTicketNumbers from '../../util/utilityFunctions'
+import generateTicketNumbers from '../../util/generateTicketNumbers';
 
 
 function App() {
@@ -120,7 +120,7 @@ function App() {
       const newTicket = {
         ticketId: ticketCounter,
         playerName: playerName,
-        ticketNumbers: generateTicketNumbers(), // Some weird algo. God help me!
+        ticketNumbers: generateTicketNumbers(),
         isSelected: false,
       };
       // Update the tickets state by adding the new ticket.
@@ -193,6 +193,7 @@ function App() {
           <div className='appRightLower'>
             <TicketDisplay
               tickets={tickets}
+              gridNum={gridNum}
             />
           </div>
         </div>
