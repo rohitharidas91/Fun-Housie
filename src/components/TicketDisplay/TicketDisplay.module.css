@@ -9,6 +9,7 @@
 
 .ticketDisplayHeader {
     display: flex;
+    align-items: center;
     height: 20%;
     margin-left: 0.5em;
 }
@@ -23,8 +24,10 @@
 
 .ticketNum {
     width: 10em;
-    margin: 1em;
+    height: 3em;
+    margin: 0 1em;
     text-align: center;
+    border-radius: 10px;
 }
 
 .btnView {
@@ -40,7 +43,7 @@
     background-color: var(--accent-1);
     color: var(--bg-primary);
     display:none;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 @keyframes popIn {

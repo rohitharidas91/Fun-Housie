@@ -7,6 +7,7 @@ import Timer from '../Timer/Timer'
 import TicketGenerator from '../TicketGenerator/TicketGenerator';
 import TicketList from '../TicketList/TicketList';
 import TicketDisplay from '../TicketDisplay/TicketDisplay';
+import TicketPrint from '../TicketPrint/TicketPrint';
 import '../Theme/theme.css';
 import ThemeProvider from '../Theme/ThemeProvider'
 import generateTicketNumbers from '../../util/generateTicketNumbers';
@@ -137,6 +138,8 @@ function App() {
     setTickets(updatedTickets);
   }
 
+  //******* Export Selected Tickets to pdf ********/
+
 
 
   // ****** App Component ***** //
@@ -188,6 +191,7 @@ function App() {
                 onTicketSelect={toggleSelected}
                 clickDelete={removeTicket}
               />
+              <TicketPrint />
             </div>
           </div>
           <div className='appRightLower'>

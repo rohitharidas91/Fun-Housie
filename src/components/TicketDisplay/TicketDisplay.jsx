@@ -1,8 +1,10 @@
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import styles from './TicketDisplay.module.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function TicketDisplay(props) {
+    // This is for reselecting the number when enter key is pressed.
+    const inputRef = useRef(null);
 
     const initialGrid = Array(27).fill({ num: '', isCalled: false, row:'' })
     const [ticketGrid, setTicketGrid] = useState(initialGrid);
@@ -83,6 +85,14 @@ function TicketDisplay(props) {
     const displayTicket = () => {
         if (!ticketId) {
             setTicketGrid(initialGrid)
+            setTopLine(false)
+            setMidLine(false)
+            setBotLine(false)
+            setHouse(false)
+            setJFive(false)
+            setJSeven(false)
+            setFourCorners(false)
+            setStar(false)
             return;
         }
 
@@ -117,6 +127,7 @@ function TicketDisplay(props) {
             <div className={styles.ticketDisplayHeader}>
                 <input
                     type='number'
+                    ref={inputRef}
                     className={styles.ticketNum}
                     placeholder='Ticket number...'
                     value={ticketId || ''}
@@ -124,6 +135,7 @@ function TicketDisplay(props) {
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                             displayTicket();
+                            inputRef.current.select();
                         }
                     }}
                 />

@@ -1,0 +1,12 @@
+.ticketPrint {
+    display: flex;
+    align-items: center;
+    margin: 1em;
+    margin-top: 0;
+}
+
+.ticketPrint p {
+    margin-left: 1.5em;
+    
+}
+

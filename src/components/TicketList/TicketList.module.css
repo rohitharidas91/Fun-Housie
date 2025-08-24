@@ -1,5 +1,5 @@
 .ticketList {
-    height: 75%;
+    height: 40vh;
     padding: 0.5em;
     overflow-y: scroll;
     background-color: rgba(0,0, 0, 0.5);
