@@ -5,8 +5,51 @@
     margin-top: 0;
 }
 
-.ticketPrint p {
-    margin-left: 1.5em;
-    
+.ticketPrint button:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.downloadSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.downloadLink {
+    width: 100%;
+    text-decoration: none;
+}
+
+.downloadButton {
+    width: 100%;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.downloadButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.loading {
+    position: relative;
+    color: transparent;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+}
+
+.emptyState {
+    padding: 10px;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    font-size: 0.9em;
 }
 

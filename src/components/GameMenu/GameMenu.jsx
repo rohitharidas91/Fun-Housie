@@ -21,7 +21,7 @@ function GameMenu(props) {
                 className={(!props.gameStarted || props.gameOver) ? styles.disabledButton : ''}
             >{props.pause ? 'Resume' : 'Pause'}</button>
             <div className={styles.speedContainer}>
-                <label for="gameSpeed">Speed: </label>
+                <label htmlFor="gameSpeed">Speed: </label>
                 <input
                     type="range"
                     id="gameSpeed"

@@ -12,7 +12,7 @@ function TicketList(props) {
                     <input
                         type='checkbox'
                         checked={item.isSelected}
-                        onClick={() => props.onTicketSelect(item.ticketId)}
+                        onChange={() => props.onTicketSelect(item.ticketId)}
                         className={styles.checkBox}
                     />
                     <span 

@@ -191,7 +191,9 @@ function App() {
                 onTicketSelect={toggleSelected}
                 clickDelete={removeTicket}
               />
-              <TicketPrint />
+              <TicketPrint 
+                tickets={tickets}
+              />
             </div>
           </div>
           <div className='appRightLower'>

@@ -25,7 +25,7 @@ function Timer(props) {
             cx='100'
             r={radius}
             className={styles.circleProgress}
-            stroke-dasharray={circumference}
+            strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
         />
     )
