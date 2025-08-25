@@ -9,19 +9,13 @@ function TicketList(props) {
                     key={item.ticketId}
                     className={styles.ticketListItem}
                 >
-                    <input
-                        type='checkbox'
-                        checked={item.isSelected}
-                        onChange={() => props.onTicketSelect(item.ticketId)}
-                        className={styles.checkBox}
-                    />
-                    <span 
+                    <span
                         className={styles.ticketListDtls}
                         onClick={() => props.onTicketSelect(item.ticketId)}
                     >
                         {` 🎟️ Ticket No: ${item.ticketId} | 🕹️   Player: ${item.playerName}`}
                     </span>
-                    <button 
+                    <button
                         className={styles.deleteTicket}
                         onClick={() => props.clickDelete(item)}
                     >🗑️</button>

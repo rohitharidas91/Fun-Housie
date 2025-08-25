@@ -7,6 +7,7 @@ import Timer from '../Timer/Timer'
 import TicketGenerator from '../TicketGenerator/TicketGenerator';
 import TicketList from '../TicketList/TicketList';
 import TicketDisplay from '../TicketDisplay/TicketDisplay';
+import TicketPrintMenu from '../TicketPrintMenu/TicketPrintMenu';
 import TicketPrint from '../TicketPrint/TicketPrint';
 import '../Theme/theme.css';
 import ThemeProvider from '../Theme/ThemeProvider'
@@ -18,6 +19,7 @@ function App() {
   const [speed, setSpeed] = useState(10); // handled inside Timer because it has useEffect
   const [timeLeft, setTimeLeft] = useState(speed) // handled inside Timer because it has useEffect
   const [playerName, setPlayerName] = useState(''); // handled inside TicketGenerator
+  const [selectedPlayer, setSelectedPlayer] = useState(''); // handled inside TicketPrintMenu
 
   // Game Menu Functions //
 
@@ -26,7 +28,7 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [pause, setPause] = useState(true)
-  
+
   // ******** New Game ****** //
 
   function newGame() {
@@ -90,21 +92,6 @@ function App() {
     );
     setCurrentNum(calledNum)
   }
-
-
-  // ***** Function for ticket selection to be used for print option ****** //
-
-  function toggleSelected(id) {
-    setTickets(prev => {
-      return prev.map(ticket => {
-        if (ticket.ticketId === id) {
-          return { ...ticket, isSelected: !ticket.isSelected }
-        }
-        return ticket;
-      });
-    });
-  };
-
 
 
   // ****** Factory function to generate unique ticket objects.******* //
@@ -188,12 +175,18 @@ function App() {
               />
               <TicketList
                 tickets={tickets}
-                onTicketSelect={toggleSelected}
                 clickDelete={removeTicket}
               />
-              <TicketPrint 
+              <TicketPrintMenu
                 tickets={tickets}
-              />
+                selectedPlayer={selectedPlayer}
+                setSelectedPlayer={setSelectedPlayer}
+              >
+                <TicketPrint
+                  tickets={tickets}
+                  selectedPlayer={selectedPlayer}
+                />
+              </TicketPrintMenu>
             </div>
           </div>
           <div className='appRightLower'>
@@ -203,9 +196,8 @@ function App() {
             />
           </div>
         </div>
-
       </div>
-    </ThemeProvider>
+    </ThemeProvider >
 
   )
 }

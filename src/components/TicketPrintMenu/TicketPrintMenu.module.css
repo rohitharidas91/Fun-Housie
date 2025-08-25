@@ -1,0 +1,25 @@
+.ticketPrintMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+    margin-top: 0;
+}
+
+.ticketPrintMenu select {
+    height: 3em;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.ticketPrintMenu button {
+    margin: 0 0.5em;
+}
+
+.ticketPrint {
+    display: flex;
+    flex-direction: column;
+    left: -9999px;
+    position: absolute;
+}
