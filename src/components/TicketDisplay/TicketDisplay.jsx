@@ -147,8 +147,8 @@ function TicketDisplay(props) {
                     <p className={jFive ? styles.active : ''}>Jaldi 5</p>
                     <p className={jSeven ? styles.active : ''}>Jaldi 7</p>
                     <p className={topLine ? styles.active : ''}>Top line</p>
-                    <p className={midLine ? styles.active : ''}>Bottom line</p>
-                    <p className={botLine ? styles.active : ''}>Middle line</p>
+                    <p className={midLine ? styles.active : ''}>Middle line</p>
+                    <p className={botLine ? styles.active : ''}>Bottom line</p>
                     <p className={fourCorners ? styles.active : ''}>Four corners</p>
                     <p className={star ? styles.active : ''}>Star</p>
                     <p className={house ? styles.active : ''}>House</p>
