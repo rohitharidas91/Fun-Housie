@@ -142,7 +142,7 @@ function TicketDisplay(props) {
                 <button
                     className={styles.btnView}
                     onClick={displayTicket}
-                ><FaMagnifyingGlass /></button>
+                ><FaMagnifyingGlass /> &nbsp;View&nbsp; </button>
                 <span className={styles.winningTags}>
                     <p className={jFive ? styles.active : ''}>Jaldi 5</p>
                     <p className={jSeven ? styles.active : ''}>Jaldi 7</p>

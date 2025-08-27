@@ -197,6 +197,9 @@ function App() {
           </div>
         </div>
       </div>
+      <footer>
+        <p>Made with ❤️ by Blackheart!</p>
+      </footer>
     </ThemeProvider >
 
   )
